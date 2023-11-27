@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ph Tube Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./images/Icon.png" type="image/png" />
+    <!-- tailwind CSS and Daisy UI CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+  </head>
+  <body>
+    <header>
+      <nav class="container mx-auto mt-5 mb-20 border-b-2">
+        <div class="navbar flex justify-center py-5">
+          <a href="index.html"><img src="./images/Logo.png" alt="" /></a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- discussing about variable section -->
+      <section class="container mx-auto text-primary font-medium border-b-2">
+        <h1 class="text-2xl md:text-4xl font-extrabold mb-8">
+          Differences between var, let, and const:
+        </h1>
+        <p class="text-xl font-medium mb-4">
+          In JavaScript, users can declare a variable using 3 keywords that are
+          var, let, and const. In this article, we will see the differences
+          between the var, let, and const keywords. We will discuss the scope
+          and other required concepts about each keyword.
+        </p>
+        <p class="mt-12 mb-5">
+          <span class="text-3xl font-bold title">JavaScript var keyword:</span>
+          The var is the oldest keyword to declare a variable in JavaScript.
+        </p>
+        <p class="mb-5">
+          <span class="text-2xl font-medium">Scope:</span> Global scoped or
+          function scoped. The scope of the var keyword is the global or
+          function scope. It means variables defined outside the function can be
+          accessed globally, and variables defined inside a particular function
+          can be accessed within the function.
+        </p>
+        <p>
+          <span>Example 1:</span> Variable ‘a’ is declared globally. So, the
+          scope of the variable ‘a’ is global, and it can be accessible
+          everywhere in the program. The output shown is in the console.
+        </p>
+        <p>
+          function f() { <br />
+          console.log(a) } <br />
+          f(); <br />
+          console.log(a); var a = 10 <br />
+        </p>
+        <p>
+          <span>Output:</span> <br />
+          10 <br />
+          10
+        </p>
+        <p>
+          <span>Example 2:</span> The variable ‘a’ is declared inside the
+          function. If the user tries to access it outside the function, it will
+          display the error. Users can declare the 2 variables with the same
+          name using the var keyword. Also, the user can reassign the value into
+          the var variable. The output is shown in the console.
+        </p>
+        <p>
+          function f() { <br />
+          // It can be accessible any <br />
+          // where within this function <br />
+          var a = 10;<br />
+          console.log(a)<br />
+          }<br />
+          f();<br />
+          // A cannot be accessible <br />
+          // outside of function<br />
+          console.log(a);
+        </p>
+        <p>
+          <span>Output:</span> <br />
+          10 <br />
+          ReferenceError: a is not defined
+        </p>
+        <p>
+          <span>Example 3:</span> The user can re-declare the variable using var
+          and the user can update the var variable. The output is shown in the
+          console.
+          <br />
+
+          var a = 10 <br />
+          // User can re-declare <br />
+          // variable using var var <br />
+          a = 8 <br />
+          // User can update var variable <br />
+          a = 7 <br />
+          <span>Output:</span> 7
+        </p>
+        <p>
+          <span>Example 4:</span> If users use the var variable before the
+          declaration, it initializes with the undefined value. The output is
+          shown in the console.
+        </p>
+        <p>
+          console.log(a); <br />
+          var a = 10;
+        </p>
+        <p><span>Output:</span> undefined</p>
+        <p class="mt-12 mb-5">
+          <span class="text-3xl font-bold title">JavaScript let keyword:</span>
+          The let keyword is an improved version of the var keyword.
+        </p>
+        <p>
+          <span>Scope:</span>
+          block scoped: The scope of a let variable is only block scoped. It
+          can’t be accessible outside the particular block ({block}). Let’s see
+          the below example.
+        </p>
+        <p><span>Example 1:</span> The output is shown in the console.</p>
+        <p>
+          let a = 10; <br />
+          function f() { <br />
+          let b = 9 <br />
+          console.log(b);<br />
+          console.log(a); <br />
+          } <br />
+          f();<br />
+          Output: 9 10
+        </p>
+        <p>
+          <span>Example 2:</span> The code returns an error because we are
+          accessing the let variable outside the function block. The output is
+          shown in the console.
+        </p>
+        <p>
+          let a = 10; <br />
+          function f() { <br />
+          if (true) { <br />
+          let b = 9 <br />
+          // It prints 9 <br />
+          console.log(b); } <br />// It gives error as it <br />
+          // defined in if block<br />
+          console.log(b); } <br />
+          f() <br />
+          // It prints 10 <br />
+          console.log(a) <br />
+          Output: 9 <br />
+          ReferenceError: b is not defined
+        </p>
+        <p>
+          <span>Example 3:</span> Users cannot re-declare the variable defined
+          with the let keyword but can update it.
+        </p>
+        <p>
+          <span>Example 4:</span> Users can declare the variable with the same
+          name in different blocks using the let keyword.
+        </p>
+        <p>
+          let a = 10 <br />
+          // It is not allowed let a = 10<br />
+          // It is allowed a = 10 <br />
+          Output: Uncaught SyntaxError: Identifier 'a' has already been declared
+        </p>
+        <p>
+          let a = 10 <br />
+          if (true) { <br />
+          let a = 9 console.log(a) <br />
+          // It prints 9 }<br />
+          console.log(a)<br />
+          // It prints 10 <br />
+          Output: 9 10
+        </p>
+        <p>
+          <span>Example 5:</span> If users use the let variable before the
+          declaration, it does not initialize with undefined just like a var
+          variable, and returns an error. <br />
+          console.log(a);<br />
+          let a = 10;<br />
+          Output: Uncaught ReferenceError: Cannot access 'a' before
+          initialization
+        </p>
+        <p class="mb-4 mt-12">
+          <span class="text-3xl font-bold title"
+            >const keyword in JavaScript:</span
+          >
+          The const keyword has all the properties that are the same as the let
+          keyword, except the user cannot update it. <br />
+          <span>Scope:</span> block scoped: When users declare a const variable,
+          they need to initialize it, otherwise, it returns an error. The user
+          cannot update the const variable once it is declared. <br />
+          <span>Example 1:</span>: We are changing the value of the const
+          variable so that it returns an error. The output is shown in the
+          console.
+        </p>
+        <p>
+          const a = 10; <br />
+          function f() { <br />
+          a = 9<br />
+          console.log(a) }<br />
+          f();<br />
+          Output: TypeError:Assignment to constant variable.
+        </p>
+        <p>
+          <span>Example 2:</span> Users cannot change the properties of the
+          const object, but they can change the value of the properties of the
+          const object. <br />
+          const a = { prop1: 10, prop2: 9 } <br />
+          // It is allowed a.prop1 = 3 <br />
+          // It is not allowed a = { b: 10, prop2: 9 } <br />
+          Output: Uncaught SyntaxError:Unexpected identifier
+        </p>
+        <!-- Table -->
+        <figure class="mt-10 mb-20">
+          <table class="border">
+            <thead>
+              <tr>
+                <th class="border"><strong>var</strong></th>
+                <th class="border"><strong>let</strong></th>
+                <th class="border"><strong>const</strong></th>
+              </tr>
+            </thead>
+            <tbody class="border">
+              <tr class="border">
+                <td class="border">
+                  The scope of a var variable is functional scope.
+                </td>
+                <td class="border">
+                  The scope of a let variable is block scope.
+                </td>
+                <td class="border">
+                  The scope of a const variable is block scope.
+                </td>
+              </tr>
+              <tr class="border">
+                <td class="border">
+                  It can be updated and re-declared into the scope.
+                </td>
+                <td class="border">
+                  It can be updated but cannot be re-declared into the scope.
+                </td>
+                <td class="border">
+                  It cannot be updated or re-declared into the scope.
+                </td>
+              </tr>
+              <tr class="border">
+                <td class="border">
+                  It can be declared without initialization.
+                </td>
+                <td class="border">
+                  It can be declared without initialization.
+                </td>
+                <td class="border">
+                  It cannot be declared without initialization.
+                </td>
+              </tr>
+              <tr class="border">
+                <td class="border">
+                  It can be accessed without initialization as its default value
+                  is “undefined”.
+                </td>
+                <td class="border">
+                  It cannot be accessed without initialization otherwise it will
+                  give ‘referenceError’.
+                </td>
+                <td class="border">
+                  It cannot be accessed without initialization, as it cannot be
+                  declared without initialization.
+                </td>
+              </tr>
+              <tr class="border">
+                <td class="border">
+                  hoisting done, with initializing as ‘default’ value
+                </td>
+                <td class="border">
+                  Hoisting is done, but not initialized (this is the reason for
+                  the error when we access the let variable before
+                  declaration/initialization)
+                </td>
+                <td class="border">
+                  Hoisting is done, but not initialized (this is the reason for
+                  the error when we access the const variable before
+                  declaration/initialization)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+      </section>
+     
+      <!-- What do you mean by REST API? Section -->
+      <section class="container mx-auto my-20 font-medium">
+        <div class="mt-12">
+          <h1 class="text-2xl md:text-5xl mb-5">What is a REST API?</h1>
+          <p class="mb-4">
+            An API, or application programming interface, is a set of rules that
+            define how applications or devices can connect to and communicate
+            with each other. A REST API is an API that conforms to the design
+            principles of the REST, or representational state transfer
+            architectural style. For this reason, REST APIs are sometimes
+            referred to RESTful APIs.
+          </p>
+          <p>
+            First defined in 2000 by computer scientist Dr. Roy Fielding in his
+            doctoral dissertation, REST provides a relatively high level of
+            flexibility and freedom for developers. This flexibility is just one
+            reason why REST APIs have emerged as a common method for connecting
+            components and applications in a microservices architecture.
+          </p>
+        </div>
+        <div class="mt-12">
+          <h1 class="text-2xl md:text-5xl mb-5">REST design principles:</h1>
+          <p>
+            At the most basic level, an API is a mechanism that enables an
+            application or service to access a resource within another
+            application or service. The application or service doing the
+            accessing is called the client, and the application or service
+            containing the resource is called the server.
+          </p>
+          <div>
+            <p>
+              Some APIs, such as SOAP or XML-RPC, impose a strict framework on
+              developers. But REST APIs can be developed using virtually any
+              programming language and support a variety of data formats. The
+              only requirement is that they align to the following six REST
+              design principles - also known as architectural constraints:
+            </p>
+            <ul class="mt-4">
+              <li>
+                <span class="text-xl ml-2 mb-2">1.Uniform interface:</span>All
+                API requests for the same resource should look the same, no
+                matter where the request comes from. The REST API should ensure
+                that the same piece of data, such as the name or email address
+                of a user, belongs to only one uniform resource identifier
+                (URI). Resources shouldn’t be too large but should contain every
+                piece of information that the client might need.
+              </li>
+              <li>
+                <span class="text-xl ml-2 mb-2"
+                  >2. Client-server decoupling:</span
+                >
+                In REST API design, client and server applications must be
+                completely independent of each other. The only information the
+                client application should know is the URI of the requested
+                resource; it can't interact with the server application in any
+                other ways. Similarly, a server application shouldn't modify the
+                client application other than passing it to the requested data
+                via HTTP.
+              </li>
+              <li>
+                <span class="text-xl ml-2 mb-2">3. Statelessness:</span> REST
+                APIs are stateless, meaning that each request needs to include
+                all the information necessary for processing it. In other words,
+                REST APIs do not require any server-side sessions. Server
+                applications aren’t allowed to store any data related to a
+                client request.
+              </li>
+              <li>
+                <span class="text-xl ml-2 mb-2">4. Cacheability:</span> When
+                possible, resources should be cacheable on the client or server
+                side. Server responses also need to contain information about
+                whether caching is allowed for the delivered resource. The goal
+                is to improve performance on the client side, while increasing
+                scalability on the server side.
+              </li>
+              <li>
+                <span class="text-xl ml-2 mb-2"
+                  >5. Layered system architecture:</span
+                >
+                In REST APIs, the calls and responses go through different
+                layers. As a rule of thumb, don’t assume that the client and
+                server applications connect directly to each other. There may be
+                a number of different intermediaries in the communication loop.
+                REST APIs need to be designed so that neither the client nor the
+                server can tell whether it communicates with the end application
+                or an intermediary.
+              </li>
+              <li>
+                <span class="text-xl ml-2 mb-2"
+                  >6. Code on demand (optional):</span
+                >
+                REST APIs usually send static resources, but in certain cases,
+                responses can also contain executable code (such as Java
+                applets). In these cases, the code should only run on-demand.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12">
+          <h1 class="text-2xl md:text-5xl mb-5">How REST APIs work</h1>
+          <p>
+            REST APIs communicate via HTTP requests to perform standard database
+            functions like creating, reading, updating, and deleting records
+            (also known as CRUD) within a resource. For example, a REST API
+            would use a GET request to retrieve a record, a POST request to
+            create one, a PUT request to update a record, and a DELETE request
+            to delete one. All HTTP methods can be used in API calls. A
+            well-designed REST API is similar to a website running in a web
+            browser with built-in HTTP functionality.
+          </p>
+          <p class="my-5">
+            The state of a resource at any particular instant, or timestamp, is
+            known as the resource representation. This information can be
+            delivered to a client in virtually any format including JavaScript
+            Object Notation (JSON), HTML, XLT, Python, PHP, or plain text. JSON
+            is popular because it’s readable by both humans and machines—and it
+            is programming language-agnostic.
+          </p>
+          <p>
+            Request headers and parameters are also important in REST API calls
+            because they include important identifier information such as
+            metadata, authorizations, uniform resource identifiers (URIs),
+            caching, cookies and more. Request headers and response headers,
+            along with conventional HTTP status codes, are used within
+            well-designed REST APIs.
+          </p>
+        </div>
+        <div class="mt-12">
+          <h1 class="text-2xl md:text-5xl mb-5">REST API best practices</h1>
+          <p>
+            Although flexibility is a big advantage of REST API design, that
+            same flexibility makes it easy to design an API that’s broken or
+            performs poorly. For this reason, professional developers share best
+            practices in REST API specifications.
+          </p>
+          <p class="my-5">
+            The OpenAPI Specification (OAS) establishes an interface for
+            describing an API in a way that allows any developer or application
+            to discover it and fully understand its parameters and capabilities
+            - available endpoints, allowed operations on each endpoint,
+            operation parameters, authentication methods, and other information.
+            The latest version, OAS3 (link resides outside ibm.com), includes
+            with hands-on tools, such as the OpenAPI Generator, for generating
+            API clients and server stubs in different programming languages
+          </p>
+          <p>
+            Securing a REST API also starts with industry best practices, such
+            as using hashing algorithms for password security and HTTPS for
+            secure data transmission. An authorization framework like OAuth 2.0
+            (link resides outside ibm.com) can help limit the privileges of
+            third-party applications. Using a timestamp in the HTTP header, an
+            API can also reject any request that arrives after a certain time
+            period. Parameter validation and JSON Web Tokens are other ways to
+            ensure that only authorized clients can access the API.
+          </p>
+        </div>
+      </section>
+
+      <!-- Null and Undefined Section -->
+      <section class="container mx-auto my-52 font-medium border-b-2">
+        <h1 class="text-2xl md:text-5xl font-extrabold mb-4">
+          Null and Undefined
+        </h1>
+        <div class="mt-10">
+          <h3 class="text-4xl font-semibold">Overview</h3>
+          <p>
+            Null in JavaScript means an empty value and is also a primitive type
+            in JavaScript. The variable which has been assigned as null contains
+            no value. Undefined, on the other hand, means the variable has been
+            declared, but its value has not been assigned.
+          </p>
+        </div>
+        <div class="mt-10">
+          <h3 class="text-3xl">What is Null?</h3>
+          <p>
+            We have heard the word "null" many times in English. Its literal
+            meaning is having no value. The same meaning is analogous to the
+            meaning of null in programming. Null is basically an assignment
+            value given to a variable. The variable which has been assigned as
+            null contains no value. When we assign null as a value to any
+            variable, it means that it is empty or blank. It is to show that the
+            variable has no value. Also, null is an object in JavaScript. When
+            it gets assigned to a variable, it represents no value. The setting
+            of the value must be done manually by the user as JavaScript never
+            sets the value as null. An object can be emptied by setting it to
+            null. <br />
+            Syntax of Null and Undefined in JavaScript: var x = null;
+          </p>
+        </div>
+        <div class="mt-10">
+          <h3 class="text-3xl">What is Undefined?</h3>
+          <ps>
+            There is a subtle difference between null and undefined, but as a
+            programmer, it is important that we understand it clearly. As the
+            name suggests, undefined means "not defined". So we declare a
+            variable but do not assign a value to it, the variable becomes
+            undefined. Unlike null, the value of an undefined variable is set by
+            JavaScript as undefined. The variable gets created at the run-time.
+            When we do not pass an argument for a function parameter, the
+            default value is taken as undefined. Besides, when a function
+            doesn't return a value, it returns undefined. <br />
+            Syntax of Null and Undefined in JavaScript: var x;
+          </ps>
+        </div>
+        <div class="mt-10">
+          <h3 class="text-3xl">Type of Null and Undefined</h3>
+          <p>
+            In JavaScript, to check the type of variable, we use the "typeof"
+            operator.
+          </p>
+          <p class="my-5">
+            Example- <br />
+            var x=null; <br />
+            console.log(typeof(x));<br />
+            Output- object <br />
+            Here we have assigned the null value to variable x and then checked
+            its type. Undefined- <br />
+            console.log(typeof undefined); <br />
+            Output- undefined <br />
+            As discussed above, the type of undefined is undefined itself. So
+            basically, it is a data type.
+          </p>
+          <p>
+            Example- <br />
+            var x; <br />
+            console.log(typeof(x)); <br />
+            Output- undefined <br />
+            Here we have declared variable x and then checked its type. During
+            run time, undefined gets assigned to the variable x.
+          </p>
+        </div>
+        <div class="mt-10">
+          <h3 class="text-3xl">Why is Null an Object?</h3>
+          <p>
+            Basically, null is a primitive type of a variable in JavaScript.
+            Many people consider it a bug in JavaScript as it considers null as
+            an object. Changing or fixing this bug will break the existing
+            codebase, so it is not yet changed. The type of null is an object.
+            That is why it is treated as an object. There is another theory
+            behind this. The initial version of JavaScript had values stored as
+            32 bits. The first 3 bits represented the data type, and the
+            remaining bits represented the value. So for all the objects, the
+            type started from 000. <br />
+            Null typically means empty, so it had all 0s stored in 32 bits. So
+            the JavaScript reads the first 3 digits of null, which are all 0 and
+            hence treats it as an object. The figure represents the same concept
+            used in the initial version of JavaScript. Why is null an object In
+            APIs, null is often used or returned in a place where an object can
+            be expected as the output but no object is relevant. This shows the
+            absence of an object as null is returned.
+          </p>
+        </div>
+        <div class="mt-10">
+          <h3 class="text-3xl">Differentiating Using isNaN()</h3>
+          The difference between null and undefined in JavaScript can also be
+          made while performing arithmetic operations like- addition,
+          subtraction, multiplication, division etc. While performing various
+          arithmetic operations, null is converted to 0, and then the operation
+          is performed, while undefined is converted to NaN. This is so because
+          while performing arithmetic operations, the function toNumber() gets
+          called on it, which converts null to 0 and undefined to NaN. <br />
+          var length=19; <br />
+          var breadth; <br />
+          var area=length*breadth; <br />
+          console.log(area); <br />
+          //NaN <br />
+          var length2=19; <br />
+          var breadth2=null; <br />
+          var area2=length2*breadth2; <br />
+          console.log(area2); //0 <br />
+          Output- <br />
+          NaN <br />
+          0 <br />
+          We can see that when we perform arithmetic operations on null, the
+          value gets converted to 0 and then the further operations get
+          performed. When we perform arithmetic operations on undefined, it
+          prints NaN as the value is undefined and not a number. Use this Online
+          JavaScript Compiler to compile your code.
+        </div>
+        <div class="mt-10">
+          <h3 class="text-3xl mb-4">Undefined vs Null</h3>
+          <p>
+            The following table summarises the difference between null and
+            undefined in JavaScript.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Area</th>
+                <th style="text-align: center">Undefined</th>
+                <th style="text-align: center">Null</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: center">Definition</td>
+                <td style="text-align: center">
+                  Undefined means the variable has been declared, but its value
+                  has not been assigned.
+                </td>
+                <td style="text-align: center">
+                  Null means an empty value or a blank value.
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center">The typeof operator</td>
+                <td style="text-align: center">
+                  The typeof() operator returns <strong>undefined</strong> for
+                  an undefined variable.
+                </td>
+                <td style="text-align: center">
+                  The typeof() operator returns the type as an
+                  <strong>object</strong> for a variable whose value is assigned
+                  as null.
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center">
+                  On performing arithmetic operations
+                </td>
+                <td style="text-align: center">
+                  It returns <strong>NaN</strong> on performing arithmetic
+                  operations.
+                </td>
+                <td style="text-align: center">
+                  converts to 0 then perform the operation
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center">Is it an assignment value?</td>
+                <td style="text-align: center">
+                  No, as there is no value assigned to the variable, it becomes
+                  undefined.
+                </td>
+                <td style="text-align: center">
+                  Yes, as we assign null to a variable, it is an assignment
+                  value.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <p>
+              <span>Examples:</span> <br />
+              Example 1- <br />
+              var exp=null;<br />
+              var base=2; <br />
+              console.log(base**exp); <br />
+              //2**0=1 <br />
+              Output- 1 <br />
+              As we know, when we initialize a variable as null, and perform
+              arithmetic operations on it, then it gets converted to 0. We have
+              calculated the exponent of the base, and here the exponent is 0 so
+              the value becomes 1. <br />
+              Example 2- <br />
+              function areaFunction(l,b,h) { <br />
+              var area =l*b*h; <br />
+              console.log(area); <br />
+              //NaN <br />
+              console.log(h); <br />//undefined } <br />
+              areaFunction(19,78); <br />
+              Output- <br />
+              NaN <br />
+              undefined <br />
+              As discussed above, we haven't passed any argument for 'h' so it
+              takes the default value as undefined. And we have performed
+              arithmetic operations on variables out of which one is undefined,
+              so the result is NaN. JavaScript is the language that powers the
+              modern web. Join Scaler Topics certification course and become a
+              front-end development expert.
+            </p>
+          </div>
+        </div>
+        <div class="mt-10 mb-10">
+          <h3 class="text-3xl">Conclusion</h3>
+          <ul>
+            <li>
+              1. Null is basically an assignment value. The variable which has
+              been assigned as null contains no value and is empty.
+            </li>
+            <li>
+              2. Undefined is when we declare a variable but do not assign a
+              value to it(define it), the variable becomes undefined.
+            </li>
+            <li>3. Null is a type of object.</li>
+            <li>4. The data type of undefined is undefined.</li>
+            <li>
+              5. When we perform arithmetic operations on null, the value gets
+              converted to 0, and then the further operations get performed.
+              When we perform arithmetic operations on undefined, it prints NaN
+              as the value is undefined and not a number.
+            </li>
+          </ul>
+        </div>
+      </section>
+      
+    </main>
+  </body>
+</html>
